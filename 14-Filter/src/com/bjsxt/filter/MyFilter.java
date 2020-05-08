@@ -2,6 +2,7 @@ package com.bjsxt.filter;
 //123
 //
 //
+//abcdefg
 import java.io.IOException;
 
 import javax.servlet.Filter;
@@ -15,18 +16,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /*
- * ¹ıÂËÆ÷Ê¹ÓÃ
- * ×÷ÓÃ£º
- * 		¶Ô·şÎñÆ÷½ÓÊÜµÄÇëÇóºÍÏìÓ¦×ÊÔ´½øĞĞ¹ÜÀí
- * 		±£»¤servlet
- * Ê¹ÓÃ£º
- * 		´´½¨implements FileterµÄclass
+ * è¿‡æ»¤å™¨ä½¿ç”¨
+ * ä½œç”¨ï¼š
+ * 		å¯¹æœåŠ¡å™¨æ¥å—çš„è¯·æ±‚å’Œå“åº”èµ„æºè¿›è¡Œç®¡ç†
+ * 		ä¿æŠ¤servlet
+ * ä½¿ç”¨ï¼š
+ * 		åˆ›å»ºimplements Fileterçš„class
  * 		override
- * 				init£º·şÎñÆ÷Æô¶¯Ê±Ö´ĞĞ,×ÊÔ´³õÊ¼»¯
- * 				service:À¹½ØÇëÇóµÄ·½·¨£¬ĞèÒªÔÚ´Ë·½·¨ÖĞ´¦Àí
- * 						ĞèÒªÊÖ¶¯·ÅĞĞ	chain.doFilter(request, response);
- * 				destory:·şÎñÆ÷¹Ø±ÕµÄÊ±ºò
- * 		ÅäÖÃweb.xmlÎÄ¼şÖĞµÄ¹ı¹ıÂËÆ÷
+ * 				initï¼šæœåŠ¡å™¨å¯åŠ¨æ—¶æ‰§è¡Œ,èµ„æºåˆå§‹åŒ–
+ * 				service:æ‹¦æˆªè¯·æ±‚çš„æ–¹æ³•ï¼Œéœ€è¦åœ¨æ­¤æ–¹æ³•ä¸­å¤„ç†
+ * 						éœ€è¦æ‰‹åŠ¨æ”¾è¡Œ	chain.doFilter(request, response);
+ * 				destory:æœåŠ¡å™¨å…³é—­çš„æ—¶å€™
+ * 		é…ç½®web.xmlæ–‡ä»¶ä¸­çš„è¿‡è¿‡æ»¤å™¨
 					 	<filter>
 							<filter-name>myFilter</filter-name>
 							<filter-class>com.bjsxt.filter.MyFilter</filter-class>
@@ -36,20 +37,20 @@ import javax.servlet.http.HttpSession;
 							<url-pattern>/*</url-pattern>
 						</filter-mapping>
 						
-		¹ıÂËÆ÷µÄÊ²Ã´ÖÜÆÚ:·şÎñÆ÷µÄÆô¶¯--·şÎñÆ÷¹Ø±Õ
+		è¿‡æ»¤å™¨çš„ä»€ä¹ˆå‘¨æœŸ:æœåŠ¡å™¨çš„å¯åŠ¨--æœåŠ¡å™¨å…³é—­
 		
-		×Ü½á£º
-			1.¹ıÂËÆ÷ÓĞÎÒÃÇÊ²Ã´ºÍÅäÖÃ£¬·şÎñÆ÷¸ù¾İÇëÇóµÄĞÅÏ¢½øĞĞµ÷ÓÃ
-		Ö´ĞĞ£º
-			ä¯ÀÀÆ÷·¢ÆğÇëÇóµ½·şÎñÆ÷£¬·şÎñÆ÷½ÓÊÕµ½ÇëÇóºó£¬·şÎñÆ÷¸ù¾İURIĞÅÏ¢ÔÚÅäÖÃÖĞÕÒµ½¶ÔÓ¦µÄFilter
-			µÄdofilter·½·¨¡£×ö¶ÔÓ¦µÄ´¦Àí£¬Èç¹û»¹ÓĞ·ûºÏÒªÇóµÄ¹ıÂËÆ÷¼ÌĞøÖ´ĞĞ¡£ÖªµÀÖ´ĞĞ¶ÔÓ¦µÄservlet
-			½øĞĞÇëÇó´¦Àí¡£servlet¶ÔÇëÇó´¦ÀíÍê±Ïºó£¬»¹»á¼ÌĞøÖ´ĞĞFilter.doFilter()
+		æ€»ç»“ï¼š
+			1.è¿‡æ»¤å™¨æœ‰æˆ‘ä»¬ä»€ä¹ˆå’Œé…ç½®ï¼ŒæœåŠ¡å™¨æ ¹æ®è¯·æ±‚çš„ä¿¡æ¯è¿›è¡Œè°ƒç”¨
+		æ‰§è¡Œï¼š
+			æµè§ˆå™¨å‘èµ·è¯·æ±‚åˆ°æœåŠ¡å™¨ï¼ŒæœåŠ¡å™¨æ¥æ”¶åˆ°è¯·æ±‚åï¼ŒæœåŠ¡å™¨æ ¹æ®URIä¿¡æ¯åœ¨é…ç½®ä¸­æ‰¾åˆ°å¯¹åº”çš„Filter
+			çš„dofilteræ–¹æ³•ã€‚åšå¯¹åº”çš„å¤„ç†ï¼Œå¦‚æœè¿˜æœ‰ç¬¦åˆè¦æ±‚çš„è¿‡æ»¤å™¨ç»§ç»­æ‰§è¡Œã€‚çŸ¥é“æ‰§è¡Œå¯¹åº”çš„servlet
+			è¿›è¡Œè¯·æ±‚å¤„ç†ã€‚servletå¯¹è¯·æ±‚å¤„ç†å®Œæ¯•åï¼Œè¿˜ä¼šç»§ç»­æ‰§è¡ŒFilter.doFilter()
 			
-		°¸Àı£º
-			Í³Ò»±àÂë¸ñÊ½½øĞĞÉèÖÃ
-			session¹ÜÀí
-			È¨ÏŞ¹ÜÀí
-			×ÊÔ´¹ÜÀí£¨Í³Ò»Ë®Ó¡£¬ºÍĞ³´Ê»ã£©
+		æ¡ˆä¾‹ï¼š
+			ç»Ÿä¸€ç¼–ç æ ¼å¼è¿›è¡Œè®¾ç½®
+			sessionç®¡ç†
+			æƒé™ç®¡ç†
+			èµ„æºç®¡ç†ï¼ˆç»Ÿä¸€æ°´å°ï¼Œå’Œè°è¯æ±‡ï¼‰
 			
 			
 
@@ -67,7 +68,7 @@ public class MyFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		System.out.println("MyFilter   doFilter()-----1");
-		//ÉèÖÃÇëÇó±àÂë¸ñÊ½
+		//è®¾ç½®è¯·æ±‚ç¼–ç æ ¼å¼
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
@@ -76,7 +77,7 @@ public class MyFilter implements Filter {
 		if(hs.getAttribute("user")==null) {
 			((HttpServletResponse)response).sendRedirect("/a/login.jsp");
 		}else {
-			//·ÅĞĞ requestÓĞÓÃ
+			//æ”¾è¡Œ requestæœ‰ç”¨
 			chain.doFilter(request, response);			
 			System.out.println("MyFilter   doFilter()------2");
 		}
