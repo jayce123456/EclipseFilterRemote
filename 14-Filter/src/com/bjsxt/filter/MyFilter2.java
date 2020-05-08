@@ -1,6 +1,5 @@
 package com.bjsxt.filter;
-//github.com/jayce123456/EclipseFilterRemote.git
-import java.io.IOException;
+//github.com/jayce123456/EclfOException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
