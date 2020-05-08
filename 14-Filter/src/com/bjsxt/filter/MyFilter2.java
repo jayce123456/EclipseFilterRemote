@@ -1,9 +1,5 @@
 package com.bjsxt.filter;
-<<<<<<< HEAD
-//k
-=======
-//aaa ad发
->>>>>>> branch 'master' of https://github.com/jayce123456/EclipseFilterRemote.git
+//k1
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
